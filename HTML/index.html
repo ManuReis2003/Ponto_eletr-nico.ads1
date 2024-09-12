@@ -15,14 +15,24 @@
     <dialog id="dialog-ponto">
         <p>Data</p>
         <p>Hora</p>
-        <button>Entrada</button>
-        <button>Intervalo</button>
-        <button>Volta Intevalo</button>
-        <button>Saída</button>
-        <button id="btn-dialog-fechar">Fechar</button>
+
+        <select name="select-tipos-ponto" id="select-tipos-ponto">   // SELECT = COMBOBOX
+
+            <option value="entrada"> Entrada</option>
+            <option value="saida"> Saída</option>
+            <option value="Intervalo">Intervalo</option>
+            <option value="vola-intervalo">Volta Intervalo</option>
+
+
+        </select>
+<!-- verficar -->
+    
+        <button id="btn-dialog-registrar-ponto"> Registrar Ponto</button>
+        <button id="btn-dialog-fechar">X</button>  <!-- FECHAR --> 
     </dialog>
 
-    <button id="dialog-ponto"> Registrar ponto!</button>
+    <button id="btn-registrar-ponto"> Registrar ponto!</button>
+
     <script src="../JS/index.js"> </script>
 </body>
 </html>

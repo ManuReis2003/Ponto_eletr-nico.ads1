@@ -1,10 +1,10 @@
 .data-hora {
     text-align: center;
-    background-color: rgb(0, 255, 191);
+    background-color: rgb(10, 250, 238);
     border-radius: 10px;
-
 }
 #btn-dialog-fechar{
-position:absolute;  /*fixo em relação ao elemento Pai */
-                        /* posiciona um elemento q ´efixo no VIEWPOR ( posicional com coordenadas) */
+position:absolute; /*fixo em relação ao elemento Pai */
+top: 0;  /* posiciona um elemento q ´efixo no VIEWPOR ( posicional com coordenadas) */
+right: 0;                        
 }
