@@ -2,9 +2,16 @@
     text-align: center;
     background-color: rgb(10, 250, 238);
     border-radius: 10px;
+    border: 2px solid;
+    border-color: blue;
 }
 #btn-dialog-fechar{
-position:absolute; /*fixo em relação ao elemento Pai */
-top: 0;  /* posiciona um elemento q ´efixo no VIEWPOR ( posicional com coordenadas) */
-right: 0;                        
+    position:absolute; /*fixo em relação ao elemento Pai */
+    top: 0;  /* posiciona um elemento q ´efixo no VIEWPOR ( posicional com coordenadas) */
+    right: 0;                        
+}
+
+#btn-registrar-ponto{
+    margin-top: 8px; ;
+    color: blueviolet;
 }
