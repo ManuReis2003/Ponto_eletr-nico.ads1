@@ -98,6 +98,9 @@ btnDialogRegistrarPonto.addEventListener("Click", () => {
 // recuperar tipo do último acesso 
 // salvamos o tipo de chave 
 
+// div alerta
+// FAZER!!!!!!!!!!!!!!!!!
+
 
 function daySemana() {
     //retorna dia semana
@@ -107,7 +110,7 @@ function daySemana() {
 // Função para retornar a data completa
 function dataCompleta(){ 
   const date = new Date();     //FUNÇÃO QUE TRAZ A DATA   -- padstart - define tamanho da string (dígitos)
-  return String(date.getDate()).padtart(2,'0') + "/" + String(date.getMonth() + 1).padStart(2,'0') + "/" + date.getFullYear();
+  return String(date.getDate()).padStart(2,'0') + "/" + String(date.getMonth() + 1).padStart(2,'0') + "/" + date.getFullYear();
 }
                 // PAD padStart(2, "0"): Adiciona zeros à esquerda da string até que ela tenha pelo menos 2 caracteres. Isso garante que a hora seja sempre exibida com 2 dígitos 
 function horaCompleta() {  // FUNÇÃO QUE TRAZ A HORA COMPLETA

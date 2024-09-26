@@ -1,9 +1,7 @@
 .data-hora {
     text-align: center;
-    background-color: rgb(10, 250, 238);
+    background-color:#CEF09D;
     border-radius: 10px;
-    border: 2px solid;
-    border-color: blue;
 }
 #btn-dialog-fechar{
     position:absolute; /*fixo em relação ao elemento Pai */
@@ -11,7 +9,30 @@
     right: 0;                        
 }
 
-#btn-registrar-ponto{
+#div-btn-registrar-ponto{
     margin-top: 8px; ;
     color: blueviolet;
+    display: flex;
+}
+
+.data-hora p{
+    font-family: "Gowun Batang", serif;
+    font-weight: 550;
+    font-style: normal;
+    font-size: xx-large;
+    margin: 10px 5px 10px 5px;
+}
+#btn-registrar-ponto{
+    background-color: #1C646D;
+    color: white;
+  
+}
+#div-btn-registrar-ponto{
+    text-align: center;
+    display: center;
+}
+.data-hora {
+    text-align: center;
+    background-color:#CEF09D;
+    border-radius: 10px;
 }
