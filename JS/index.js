@@ -19,92 +19,106 @@ const arrayDayWeek =["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira",
 // Função para retornar o dia da semana por extenso
 const dialogPonto = document.getElementById("dialog-ponto")
 
+// ARRUMAR !!!!
+function getUserLocation(){ 
 navigator.geolocation.getCurrentPosition((position) => {   // API 
   console.log(position);
   console.log(position.coords.latitude);
   console.log(position.coords.longitude);
 });
-//To do : 
-
-//Apresentar para o user a data e hora atualizados
-// atualizar a data todos os dia 0:00
-//atualizar a hr td segundo
-//Organizar código
-//salvar o histório de ponto ( não sobrescrever)
-//salvar no localstore o último tipo de pono do usuário
-//Recuperar localização do user
-// Ao registrar ponto, fechar modal
-// Estilo 
 
 
-//3- Fazer uma condicional e atrbuir o valor o select confroe a tabela:
-   // tipo útimo ponto  | valor select 
-   // entrada           | intervalo
-   //intervalo          | volta-intervalo
-   //volta-intervalo    | saída
-   //saída              | entrada
-    // TO-DO:
+let proxPonto = {
+  "entrada": "intervalo",
+  "intervalo": "volta-intervalo",
+  "volta-intervalo": "saida",
+  "saida": "entrada"
+}
+
+let dialogHora = document.getElementById("dialog-hora");
+let dialogData = document.getElementById("dialog-data");
+
+dialogData.textContent = "Data: " + dataCompleta();
+
+
+//     verificar linhas 44 e 45  ****
     // 1 - recuperar o select por meio de id ("select-tipos-ponto")
-    let dialogSelect = document.getElementById("select-tipos-ponto");
-    
-    // 2 - recuperar o tipo do ultimo ponto que está salvo no localstorage
-    // 2.1 - salvamos o tipo na chave "tipoUltimoPonto"
-    // 2.2 - conseguimos recuperar um valor do localstorage com o getItem(chave)
-    let ultimoPonto = localStorage.getItem("tipoUltimoPonto");
-    
-    // 3 - Fazer uma condicional e atribuir o valor do select conforme tabela
-    // tipo ultimo ponto  |  valor select
-    // entrada            |  intervalo
-    // intervalo          |  volta-intervalo
-    // volta-intervalo    |  saida
-    // saida              |  entrada
-    // let proximoPonto = proxPonto[/*tipo do último ponto*/];
-    // 3.1 para setar o valor de um select, usamos o atributo value
+// let dialogSelect = document.getElementById("select-tipos-ponto");     // 2 - recuperar o tipo do ultimo ponto que está salvo no localstorage
+//let ultimoPonto = localStorage.getItem("tipoUltimoPonto");     // 2.2 - conseguimos recuperar um valor do localstorage com o getItem(chave)
+
 
 const btnRegistrarPonto = document.getElementById("btn-registrar-ponto");
-btnRegistrarPonto.addEventListener("click", () => { // () => ARROW FUNCTION)
-    dialogPonto.showModal();
-});
+btnRegistrarPonto.addEventListener("click", () => {
+    let dialogSelect = document.getElementById("select-tipos-ponto");
+    let ultimoPonto = localStorage.getItem("tipoUltimoPonto");
+    dialogSelect.value = proxPonto[ultimoPonto];
+      //dialogHora.textContent = horaCompleta();
 
+      dialogPonto.showModal();
+});
 
 const btnDialogFechar = document.getElementById("btn-dialog-fechar");
 btnDialogFechar.addEventListener("click", () => {
     dialogPonto.close();
 });
 
+function recuperaPontosLocalStorage() {
+  let todosOsPontos = localStorage.getItem("registro");
+
+  if(!todosOsPontos) {
+      return [];
+  }
+
+  return JSON.parse(todosOsPontos);      //armazena dados
+}
+
+function salvarRegistroLocalStorage(ponto) {
+  let pontos = recuperaPontosLocalStorage();
+  
+    pontos.push(ponto);
+    // 1 - recuperar os registros anteriores
+    // 2 - adicionar o novo registro (ponto) no final do array de registros
+
+    localStorage.setItem("registro", JSON.stringify(pontos));
+}
+
+const divAlerta = document.getElementById("div-alerta");
+
 
 const btnDialogRegistrarPonto = document.getElementById("btn-dialog-registrar-ponto");
-btnDialogRegistrarPonto.addEventListener("Click", () => { 
+btnDialogRegistrarPonto.addEventListener("Click", async () => { 
+                                                // pesquisar sobre ASYNC 
+    let dataCompleta = dataCompleta();
+    let hora = horaCompleta();
+    let tipoPonto = document.getElementById("select-tipos-ponto").value;
 
-  let dataCompleta = dataCompleta();
-  let hora = horaCompleta();
-  let tipoPonto = document.getElementById("select-tipos-ponto").value;
-
-
-  let ponto = {
-    "data": dataCompleta,
-    "hora": hora,
-    "tipo": tipoPonto,
-    "id": 1
+    let location = await getUserLocation();    //  verificar!!!!!!
+                  // pesquisar sobre AWAIT   //PESQUISAR SOBRE COMO JS TRAZ A LATITUDE E LONGITUDE 
+    let ponto = {
+      "data": dataCompleta,
+      "hora": hora,
+      "tipo": tipoPonto,
+      "id": 1
   }
+
+  salvarRegistroLocalStorage(ponto);
+    
+  localStorage.setItem("tipoUltimoPonto", tipoPonto);
+
   console.log(ponto);     ////////////////////////
-  
- localStorage.setItem("registro", JSON.String(ponto));      //armazena dados
- localStorage.setItem("tipoUltimoponto", tipoPonto);
- });
+  dialogPonto.close();
 
-// Todo conjunto numérico (exceto ano) deve ter 2 dígitos (adicionar 0 se for menor q 10)
-// Retornar dia da semana por extenso (em pt-br)
-// recuperar tipo do último acesso 
-// salvamos o tipo de chave 
+  divAlerta.classList.remove("hidden");
+  divAlerta.classList.add("show");
 
-// div alerta
-// FAZER!!!!!!!!!!!!!!!!!
-
+  setTimeout(() => {
+      divAlerta.classList.remove("show");
+      divAlerta.classList.add("hidden");
+  }, 5000);
+});
 
 function daySemana() {
-    //retorna dia semana
-  const date = new Date();
+  const date = new Date();  //retorna dia semana
   return arrayDayWeek[date.getDay()];
 }
 // Função para retornar a data completa
@@ -124,8 +138,17 @@ function atualizaHora(){
     horaMinSeg.textContent = horaCompleta();                                             //-> tempo de intervalo entre as execuções em horas
                                 //funçaõ que quero executar 
 }
+function atualizaHoraDialog() {
+  dialogHora.textContent = "Hora: " + horaCompleta();
+}
+
+atualizaHora();
 setInterval(atualizaHora,1000);
+
+atualizaHoraDialog()
+setInterval(atualizaHoraDialog, 1000);
+
+
 // Atualiza os elementos da página       /sobreescreve oq ta no HTML com oq a função retorna
 diaMesAno.textContent = dataCompleta();
-horaMinSeg.textContent = horaCompleta();
 diaSemana.textContent = daySemana();

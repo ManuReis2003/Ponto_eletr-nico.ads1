@@ -1,17 +1,22 @@
 .data-hora {
     text-align: center;
-    background-color:#CEF09D;
+    background-color:#af9df0;
     border-radius: 10px;
+    
+}
+body{ 
+    display: inline;
+
 }
 #btn-dialog-fechar{
     position:absolute; /*fixo em relação ao elemento Pai */
-    top: 0;  /* posiciona um elemento q ´efixo no VIEWPOR ( posicional com coordenadas) */
+    top: 0;  /* posiciona um elemento q é fixo no VIEWPORT ( posicional com coordenadas) */
     right: 0;                        
 }
 
 #div-btn-registrar-ponto{
     margin-top: 8px; ;
-    color: blueviolet;
+    color: rgb(166, 98, 230);
     display: flex;  /* block ocupa 100% e empurra o conteúdo pra baixo*/
     justify-content: center;
 }
@@ -22,15 +27,79 @@
     font-style: normal;
     font-size: xx-large;
     margin: 10px 5px 10px 5px;
+    
 }
 #btn-registrar-ponto{
-    background-color: #1C646D;
+    background-color: #279752;
     color: white;
-    
+    border-radius: 8px;
   
 }
-.data-hora {
-    text-align: center;
-    background-color:#CEF09D;
-    border-radius: 10px;
+#btn-registrar-ponto:active {    /* cor do do hover no botão reistrar ponto  */
+    background-color: rgb(165, 29, 52);
+
+}
+#btn-dialog-registrar-ponto{
+    background-color: #a7ffc9;
+    color: rgb(0, 0, 0);
+    border-radius: 8px;
+  
+
+}
+#select-tipos-ponto {
+    font-size: 1.0rem;
+    padding: 15px;
+    
+}
+
+#dialog-ponto p {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 250;
+    font-style: normal;
+    font-size: 2rem;  
+   
+}
+#dialog-ponto{     /* ARRUMAR!!!!  */ 
+    border-radius: 6px;  
+    border: solid 1px ;
+    
+}
+#dialog-data{                      /* estilo da DATA dentro do DIALOG   */
+    font-family: "Gowun Batang", serif;
+    font-weight: 550;
+}
+
+#dialog-hora{                     /* estilo da HORA dentro do DIALOG   */
+    font-family: "Gowun Batang", serif;
+    font-weight: 550;
+}
+option{     /*Estilo das opções da combobox dentro do DIALOG   */
+    color: rgb(0, 0, 0);
+    font-family: "Gowun Batang", serif;
+    font-weight: 550;
+}
+#btn-dialog-fechar {
+    padding: 10px;
+    border: 0px;
+    background-color: rgb(132, 24, 255);
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 4px;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.show {
+    opacity: 1;
+}
+
+#div-alerta {
+    background-color: rgb(160, 228, 129);
+    color: white;
+    padding: 15px;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
 }

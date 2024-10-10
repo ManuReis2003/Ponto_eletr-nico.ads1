@@ -18,23 +18,18 @@
         <p id="hora-min-seg">09:10:37</p>
     </div>
 
-    <!-- MODAL-->
-    <dialog id="dialog-ponto">
-        <p>Data</p>
-        <p>Hora</p>
-
+    <dialog id="dialog-ponto">  <!-- MODAL-->
+        <p id="dialog-data">Data</p>
+        <p id="dialog-hora">Hora</p>
         <select name="select-tipos-ponto" id="select-tipos-ponto">   // SELECT = COMBOBOX
 
             <option value="entrada"> Entrada</option>
-
             <option value="saida"> Saída</option>
-
             <option value="Intervalo">Intervalo</option>
-
             <option value="vola-intervalo">Volta Intervalo</option>
 
         </select>
-<!-- verficar -->
+
         <button id="btn-dialog-registrar-ponto"> Registrar Ponto</button> <!-- botão p abrir o MODAL-->
         <button id="btn-dialog-fechar">X</button>  <!-- FECHAR --> 
     </dialog>
@@ -42,6 +37,10 @@
         <button id="btn-registrar-ponto"> Registrar ponto!</button> <!-- Botão  para abrir o modal-->
     </div>
 
-    <script src="../JS/index.js"> </script>
-</body>
+    <div class="hidden" id="div-alerta">
+        <p>Ponto registrado com sucesso!</p>   <!-- MENSAGEM AO CLICAR EM REGITRAR PONTO NO MODAL-->
+    </div>
+
+    <script src="../JS/index.js"> </script>      <!-- Link do JS-->
+</body> 
 </html>
