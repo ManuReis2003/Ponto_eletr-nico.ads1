@@ -12,7 +12,8 @@
 #div-btn-registrar-ponto{
     margin-top: 8px; ;
     color: blueviolet;
-    display: flex;
+    display: flex;  /* block ocupa 100% e empurra o conteúdo pra baixo*/
+    justify-content: center;
 }
 
 .data-hora p{
@@ -25,11 +26,8 @@
 #btn-registrar-ponto{
     background-color: #1C646D;
     color: white;
+    
   
-}
-#div-btn-registrar-ponto{
-    text-align: center;
-    display: center;
 }
 .data-hora {
     text-align: center;
